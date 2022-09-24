@@ -1,0 +1,13 @@
+.Vuelta {
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.Vuelta p {
+    color:blue;
+    font-style: italic;
+    font-size: 14px;
+}

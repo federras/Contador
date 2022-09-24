@@ -1,0 +1,10 @@
+.ResetButton {
+    background-color: #f8d7d7;
+    padding: 20px;
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 15px;
+}

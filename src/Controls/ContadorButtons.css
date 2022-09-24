@@ -1,0 +1,45 @@
+.ItemsButton {
+    background-color: #f8d7d7;
+    padding: 20px;
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.ContadorButton {
+    background-color: #b9ccf4;
+    font-size: 20px;
+    font-weight:900;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.ContadorButton:hover {
+    background-color: #9fb0d4;
+
+}
+
+.InactiveButton {
+    background-color: #d1ddf6;
+    color: rgb(173, 171, 171);
+    font-size: 20px;
+    font-weight:600;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.InactiveButton:hover {
+    cursor: default;
+}
+
+.MarcarVueltaButtons {
+    padding: 20px;
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+}
