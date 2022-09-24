@@ -1,35 +1,46 @@
 .ItemsButton {
-    background-color: #f8d7d7;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 10px;
     max-width: 300px;
     margin: auto;
     display: flex;
     justify-content: center;
 }
 
-.ContadorButton {
+.Button {
     background-color: #b9ccf4;
-    font-size: 20px;
-    font-weight:900;
-    padding: 15px;
+    border-width: 1px;
+    padding: 10px 30px 10px 30px;
     margin-left: 20px;
     margin-right: 20px;
     cursor: pointer;
 }
 
-.ContadorButton:hover {
-    background-color: #9fb0d4;
+.SumarButton {
+    font-size: 20px;
+    font-weight:900;
+}
 
+.TimerButton {
+    font-size: 14px;
+    font-weight:500;
+    padding: 15px;
+}
+
+.Button:hover {
+    background-color: #9fb0d4;
 }
 
 .InactiveButton {
-    background-color: #d1ddf6;
-    color: rgb(173, 171, 171);
-    font-size: 20px;
-    font-weight:600;
+    color:rgb(120, 120, 120);
+    font-size: 14px;
+    font-weight:500;
+    background-color: #d0d8e9;
+    border-width: 1px;
     padding: 15px;
     margin-left: 20px;
     margin-right: 20px;
+    cursor: pointer;
     
 }
 
@@ -38,8 +49,18 @@
 }
 
 .MarcarVueltaButtons {
-    padding: 20px;
+    background-color: #3b2ec9;
+    color: white;
+    padding: 10px;
     max-width: 300px;
     margin: auto;
     display: flex;
+    color: white;
+    font-weight: 500;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5%;
+  
+    /* justify-content: center; */
+    cursor: pointer;
+    margin-top: 5px;
 }

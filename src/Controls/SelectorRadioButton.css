@@ -1,7 +1,10 @@
 .SelectorRadioButton {
-    background-color: #f8d7d7;
-    padding: 20px;
+    background-color: #ffffff;
+    border-style: outset;
+    border-color: rgb(12, 15, 15);
+    padding: 10px;
     max-width: 300px;
+    margin-top: 0;
     margin: auto;
     display: flex;
     justify-content: center;

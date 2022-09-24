@@ -3,7 +3,7 @@ import './Title.css';
 
 function Title() {
     return(
-        <h1 className="Title">Titulo jujuja</h1>
+        <h1 className="Title">Contador</h1>
     );
 };
 

@@ -3,15 +3,15 @@ import "./ContadorButtons.css";
 
 function MarcarVueltaButton( { marcarVuelta, borrarVueltas, vueltas } ) {
     return(
-        <div className="MarcarVueltaButtons">
+        <div className="ItemsButton">
             <button
-                className="ItemsButton"
+                className="MarcarVueltaButtons"
                 onClick={ marcarVuelta }
             >
                     Marcar Vuelta
             </button>
             { (vueltas[0]) ? <button
-                className="ItemsButton"
+                className="MarcarVueltaButtons"
                 onClick={ borrarVueltas }
             > 
                 Borrar Vueltas

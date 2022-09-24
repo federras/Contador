@@ -6,13 +6,13 @@ function ContadorButtons( {clickSumar, clickRestar }) {
     return(
       <li className='ItemsButton'>
         <button 
-          className="ContadorButton"
+          className="Button SumarButton"
           onClick={ clickSumar }
         >
           +
         </button>
         <button
-          className="ContadorButton"
+          className="Button SumarButton"
           onClick={ clickRestar }
         >
           -

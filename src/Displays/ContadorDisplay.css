@@ -1,8 +1,11 @@
 .ContadorDisplay {
-    font-size: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4rem;
+    color:  #423f3f;
     display: flex;
     justify-content: center;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
+
 
 }

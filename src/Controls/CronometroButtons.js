@@ -5,13 +5,13 @@ function CronometroButtons({clickStartStopCrono, clickTemporizador, isRunning, e
     return (
         <li className='ItemsButton'>
             <button 
-                className={ ((estadoContador >= 0) && !isDecrementing) ? "ContadorButton" : "InactiveButton"}
+                className={ ((estadoContador >= 0) && !isDecrementing) ? "Button TimerButton" : "InactiveButton"}
                 onClick={ clickStartStopCrono }
             >
                 { isRunning ? "Detener Cronómetro" : "Iniciar Cronómetro"}
             </button>
                 <button
-                className={ (estadoContador > 0 && !isRunning ) ? "ContadorButton" : "InactiveButton"}
+                className={ (estadoContador > 0 && !isRunning ) ? "Button TimerButton" : "InactiveButton"}
                 onClick={ clickTemporizador }
             >
                 { isDecrementing ? "Detener Temporizador" : "Iniciar Temporizador" }

@@ -1,10 +1,18 @@
 .ResetButton {
-    background-color: #f8d7d7;
-    padding: 20px;
-    max-width: 300px;
+    background-color: #11068a;
+    color: white;
+    font-weight: 700;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5%;
     margin: auto;
     display: flex;
     justify-content: center;
     cursor: pointer;
     margin-top: 15px;
+}
+
+.ResetButton:hover {
+    background-color: #95a3ed;
+    color:#11068a;
+    font-weight: 900;
 }
