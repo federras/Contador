@@ -18,26 +18,29 @@ function App() {
   const [radioState, setRadioState] = useState("contador");
  
   const clickSumar = () => {
-    const display = Number(document.getElementById('myInput').textContent)
-      if (radioState === "contador" && !isRunning && !isDecrementing) {
-        (display === estadoContador) ? setEstadoContador(estadoContador+1) : setEstadoContador(display+1);
-      } else {
-        if (radioState === "tiempo" && !isRunning && !isDecrementing) {
-          (display === estadoContador/1000) ? setEstadoContador(estadoContador+1000)
-            : setEstadoContador(display*1000+(estadoContador%1000)+1000)
+    if (!tempoStateOK) {
+      const display = Number(document.getElementById('myInput').textContent)
+        if (radioState === "contador" && !isRunning && !isDecrementing) {
+          (display === estadoContador) ? setEstadoContador(estadoContador+1) : setEstadoContador(display+1);
+        } else {
+          if (radioState === "tiempo" && !isRunning && !isDecrementing) {
+            (display === estadoContador/1000) ? setEstadoContador(estadoContador+1000)
+              : setEstadoContador(display*1000+(estadoContador%1000)+1000)
+          }
         }
-      }
+    }
   }
 
   const clickRestar = () => {
-    const display = Number(document.getElementById('myInput').textContent)
-
-    if (radioState === "contador" && !isRunning && !isDecrementing) {
-      (display === estadoContador) ? setEstadoContador(estadoContador-1) : setEstadoContador(display-1);
-    } else {
-      if (radioState === "tiempo" && !isRunning && !isDecrementing) {
-        (display === estadoContador/1000) ? setEstadoContador(estadoContador-1000)
-            : setEstadoContador(display*1000+(estadoContador%1000)-1000)
+    if (!tempoStateOK) {
+      const display = Number(document.getElementById('myInput').textContent)
+      if (radioState === "contador" && !isRunning && !isDecrementing) {
+        (display === estadoContador) ? setEstadoContador(estadoContador-1) : setEstadoContador(display-1);
+      } else {
+        if (radioState === "tiempo" && !isRunning && !isDecrementing) {
+          (display === estadoContador/1000) ? setEstadoContador(estadoContador-1000)
+              : setEstadoContador(display*1000+(estadoContador%1000)-1000)
+        }
       }
     }
   }
@@ -47,7 +50,10 @@ function App() {
     setIsRunning(false);
     setIsDecrementing(false);
     borrarVueltas();
-    temporizadorOK();    //alternarChangeColor();
+    // temporizadorOK();
+    clearInterval(myChangeColorInterval.current);
+    setMainContainer('Main1');
+    setTempoStateOK(false);
   };
 
   //------------------------------------------------------
@@ -57,16 +63,14 @@ function App() {
     const myInterval = React.useRef();
 
     const clickStartStopCrono = () => {
-        if (estadoContador >= 0 && !isDecrementing) {
+        if (estadoContador >= 0 && !isDecrementing && !tempoStateOK) {
           setIsRunning((isRunning) => !isRunning);
-          console.log('startCrono eapepe');
         }
     }
 
     const clickTemporizador = () => {
       if (estadoContador >0 && !isRunning) {
         setIsDecrementing((isDecrementing) => !isDecrementing);
-        console.log('Decrementing ing ing ing');
       }
     }
 
@@ -74,14 +78,14 @@ function App() {
         if (isDecrementing && estadoContador === 0) {
           setIsDecrementing(false);
           alternarChangeColor();  
-
         }
     }, [isDecrementing, estadoContador])
 
     React.useEffect(()=>{
-      console.log(isRunning);
+      const display = Number(document.getElementById('myInput').textContent);
       if (radioState === "contador") {
         if (isRunning) {
+          (display === estadoContador) ? setEstadoContador(estadoContador) : setEstadoContador(display);
           myInterval.current =
               setInterval(() => {
                   setEstadoContador((cont) => cont +1);
@@ -91,6 +95,8 @@ function App() {
         } 
       } else {//si radioState está en Tiempo.
         if (isRunning) {
+          (display === estadoContador/1000) ? setEstadoContador(estadoContador+1000)
+            : setEstadoContador(display*1000+(estadoContador%1000)+990)
           myInterval.current =
               setInterval(() => {
                   setEstadoContador((cont) => cont + 10);
@@ -102,9 +108,10 @@ function App() {
     }, [isRunning]);
 
     React.useEffect(()=>{
+      const display = Number(document.getElementById('myInput').textContent)
       if (radioState === "contador") {
-        console.log(isDecrementing);
         if (isDecrementing) {
+          (display === estadoContador) ? setEstadoContador(estadoContador) : setEstadoContador(display);
           myInterval.current =
               setInterval(() => {
                   setEstadoContador((cont) => cont -1);
@@ -113,8 +120,9 @@ function App() {
             clearInterval(myInterval.current);
         } 
       } else { //si radioState está en Tiempo
-          console.log(isDecrementing);
           if (isDecrementing) {
+            (display === estadoContador/1000) ? setEstadoContador(estadoContador-1000)
+            : setEstadoContador(display*1000+(estadoContador%1000)-990)
             myInterval.current =
                 setInterval(() => {
                     setEstadoContador((cont) => cont -10);
@@ -125,11 +133,12 @@ function App() {
       }
     }, [isDecrementing]);
 
-    const temporizadorOK = () => {
-      clearInterval(myChangeColorInterval.current);
-      setMainContainer('Main1');
-    }
+    // const temporizadorOK = () => {
+    //   clearInterval(myChangeColorInterval.current);
+    //   setMainContainer('Main1');
+    // }
 
+    
     const [mainContainer, setMainContainer] = useState("Main1");
    
     const changeColor = () => {
@@ -140,26 +149,26 @@ function App() {
     }
 
     const myChangeColorInterval = React.useRef();
+    const [tempoStateOK, setTempoStateOK] = useState(false)
 
     const alternarChangeColor = () => {
         myChangeColorInterval.current =
         setInterval(() => {
           changeColor();
-          
         }, 2000);
+        setTempoStateOK(true);
     }
    
-    React.useEffect(() => {
-      console.log('aaa');
+    // React.useEffect(() => {
+    //   // console.log('aaa');
       
-    },[mainContainer]);
+    // },[mainContainer]);
 
     //-------------------------------------------------
   
     const [vueltas, setVuelta] = React.useState([]);
     
     const marcarVuelta = () => {
-        console.log("vuelta marcada");
         let newVuelta = {
           id: vueltas.length + 1,
           tempo: estadoContador,
@@ -197,6 +206,7 @@ function App() {
       <ContadorButtons
         clickSumar = { clickSumar }
         clickRestar = { clickRestar }
+        tempoStateOK = { tempoStateOK }
       />
       <CronometroButtons
         clickStartStopCrono = { clickStartStopCrono }
@@ -204,6 +214,8 @@ function App() {
         isRunning = { isRunning }
         estadoContador = { estadoContador }
         isDecrementing = { isDecrementing }
+        tempoStateOK = { tempoStateOK }
+        clickReset = { clickReset }
       />
       { isRunning ? <MarcarVueltaButton
         marcarVuelta = { marcarVuelta }

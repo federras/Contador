@@ -59,8 +59,16 @@
     font-weight: 500;
     padding: 10px 30px 10px 30px;
     border-radius: 5%;
-  
-    /* justify-content: center; */
     cursor: pointer;
     margin-top: 5px;
+}
+
+.SumarButtonInactive {
+    color:rgb(120, 120, 120);
+    background-color: #d0d8e9;
+    border-width: 1px;
+    padding: 10px 30px 10px 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
 }
